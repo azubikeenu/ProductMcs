@@ -37,11 +37,12 @@ public class ProductServiceImpl implements ProductService {
   }
 
   @Override
-  public Mono<ProductDto> update(Mono<ProductDto> productDto) {
-    return productDto
-        .map(ProductMapper::DtoToProduct)
-        .map(product -> findById(product.getId()))
-        .flatMap(this::save);
+  public Mono<ProductDto> update(Mono<ProductDto> productDto, String id) {
+    return repository
+        .findById(id)
+        .flatMap(p -> productDto.map(ProductMapper::DtoToProduct))
+        .flatMap(repository::save)
+        .map(ProductMapper::productToDto);
   }
 
   @Override

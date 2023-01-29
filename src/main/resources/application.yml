@@ -1,0 +1,9 @@
+server:
+  port: 8090
+spring:
+  data:
+    mongodb:
+      database: productdb
+  mongodb:
+    embedded:
+      version: 4.0.2

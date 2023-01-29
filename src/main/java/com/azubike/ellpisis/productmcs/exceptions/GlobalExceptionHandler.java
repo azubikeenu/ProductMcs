@@ -1,4 +1,4 @@
-package com.azubike.ellpisis.productmcs.exception;
+package com.azubike.ellpisis.productmcs.exceptions;
 
 import io.netty.util.internal.StringUtil;
 import org.springframework.boot.autoconfigure.web.WebProperties;

@@ -11,7 +11,7 @@ public interface ProductService {
 
   Mono<ProductDto> save(Mono<ProductDto> productDto);
 
-  Mono<ProductDto> update(Mono<ProductDto>productDto);
+  Mono<ProductDto> update(Mono<ProductDto>productDto , String id );
 
   Mono<Void> delete(String id);
 
