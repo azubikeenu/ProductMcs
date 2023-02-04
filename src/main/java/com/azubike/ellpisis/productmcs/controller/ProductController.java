@@ -44,12 +44,19 @@ public class ProductController {
       consumes = MediaType.APPLICATION_JSON_VALUE)
   public Mono<ProductDto> updateProduct(
       @RequestBody Mono<ProductDto> productDtoMono, @PathVariable String id) {
-    return productService.update(productDtoMono.map(productDto -> productDto.withId(id)) ,id );
+    return productService.update(productDtoMono.map(productDto -> productDto.withId(id)), id);
   }
 
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @DeleteMapping("{id}")
   public Mono<Void> deleteProduct(@PathVariable String id) {
     return productService.delete(id);
+  }
+
+  @ResponseStatus(HttpStatus.OK)
+  @GetMapping(value = "price-range", produces = MediaType.APPLICATION_JSON_VALUE)
+  public Flux<ProductDto> getPriceRange(
+      @RequestParam("min") double min, @RequestParam("max") double max) {
+    return productService.getProductsByPriceRange(min, max);
   }
 }
