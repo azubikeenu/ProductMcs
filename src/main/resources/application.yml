@@ -4,6 +4,7 @@ spring:
   data:
     mongodb:
       database: productdb
+      port: 27018
   mongodb:
     embedded:
       version: 4.0.2
