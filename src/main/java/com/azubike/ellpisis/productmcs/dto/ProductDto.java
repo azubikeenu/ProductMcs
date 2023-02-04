@@ -2,6 +2,7 @@ package com.azubike.ellpisis.productmcs.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.ToString;
 import lombok.With;
 
 import javax.validation.constraints.NotBlank;
@@ -19,4 +20,9 @@ public class ProductDto {
   private Double price;
 
   public ProductDto() {}
+
+  public ProductDto(String description,Double price) {
+    this.description = description;
+    this.price = price;
+  }
 }
