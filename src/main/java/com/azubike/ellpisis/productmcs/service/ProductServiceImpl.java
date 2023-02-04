@@ -31,7 +31,7 @@ public class ProductServiceImpl implements ProductService {
   @Override
   public Mono<ProductDto> save(Mono<ProductDto> productDto) {
     return productDto
-        .map(ProductMapper::DtoToProduct)
+        .map(ProductMapper::dtoToProduct)
         .flatMap(repository::save)
         .map(ProductMapper::productToDto);
   }
@@ -40,14 +40,14 @@ public class ProductServiceImpl implements ProductService {
   public Mono<ProductDto> update(Mono<ProductDto> productDto, String id) {
     return repository
         .findById(id)
-        .flatMap(p -> productDto.map(ProductMapper::DtoToProduct))
+        .flatMap(p -> productDto.map(ProductMapper::dtoToProduct)) // this step converts the productDto to a product entity
         .flatMap(repository::save)
         .map(ProductMapper::productToDto);
   }
 
   @Override
   public Mono<Void> delete(String id) {
-    return findById(id).map(ProductMapper::DtoToProduct).flatMap(repository::delete);
+    return findById(id).map(ProductMapper::dtoToProduct).flatMap(repository::delete);
   }
 
   private <T> Mono<T> monoResponseStatusNotFoundException(String id) {

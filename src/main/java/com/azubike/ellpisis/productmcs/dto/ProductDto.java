@@ -1,15 +1,14 @@
 package com.azubike.ellpisis.productmcs.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.With;
+import lombok.*;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-@Data
 @AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@Builder
 public class ProductDto {
   @With private String id;
 
@@ -18,7 +17,4 @@ public class ProductDto {
 
   @NotNull(message = "price cannot be null")
   private Double price;
-
-  @Builder
-  public ProductDto() {}
 }
